@@ -1,0 +1,54 @@
+server:
+  port: 8080
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:
+   url: jdbc:mysql://127.0.0.1:3306/test?characterEncoding=UTF-8
+   username: root
+   password: root
+   driver-class-name: com.mysql.jdbc.Driver
+   hikari:
+     minimum-idle: 5
+     maximum-pool-size: 20
+     connection-test-query: SELECT 1
+     max-lifetime: 1800000
+     connection-timeout: 30000
+     pool-name: DatebookHikariCP
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  redis:
+    database: 0
+    host: 127.0.0.1
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-active: 200
+        max-wait: -1
+        max-idle: 10
+        min-idle: 0
+    lettuce:
+          shutdown-timeout: 100 # 关闭超时时间
+          pool:
+            max-active: 8 # 连接池最大连接数（使用负值表示没有限制）
+            max-idle: 8 # 连接池中的最大空闲连接
+            max-wait: 30 # 连接池最大阻塞等待时间（使用负值表示没有限制）
+            min-idle: 0 # 连接池中的最小空闲连接
+
+    timeout: 1s
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+logging:
+  config: classpath:logback-spring.xml
+ # path: D:/springboottest/logs
+  level:
+   com.example.springboot.mapper : debug
+

@@ -1,0 +1,4 @@
+server.port=8080
+server.servlet.context-path=/hello
+name=我没有三颗心脏
+age=22
